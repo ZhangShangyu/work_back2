@@ -60,17 +60,4 @@ public class AppConfig implements TransactionManagementConfigurer, EnvironmentAw
     }
 
 
-//    @Bean
-//    public JedisConnectionFactory redisConnectionFactory() {
-//        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-//        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
-//        jedisConnectionFactory.setHostName(env.getProperty("redis.host").trim());
-//        jedisConnectionFactory.setPort(Integer.parseInt(env.getProperty("redis.port").trim()));
-//        jedisConnectionFactory.setPassword(env.getProperty("redis.password").trim());
-//        jedisConnectionFactory.setDatabase(Integer.parseInt(env.getProperty("redis.database").trim()));
-//        jedisConnectionFactory.setUsePool(true);
-//        jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
-//        return jedisConnectionFactory;
-//    }
-
 }
