@@ -1,6 +1,8 @@
 package com.zsy.bmw.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.ApplicationContext;
@@ -43,6 +45,11 @@ public class AppConfig implements TransactionManagementConfigurer, EnvironmentAw
         sessionFactory.setMapperLocations(applicationContext.getResources("classpath*:mapper/*.xml"));
         sessionFactory.setTypeAliasesPackage(env.getProperty("mapper.model.package"));
         return sessionFactory;
+    }
+
+    @Bean
+    public SolrClient solrClient() {
+        return new HttpSolrClient(env.getProperty("solr.core.house"));
     }
 
     @Bean

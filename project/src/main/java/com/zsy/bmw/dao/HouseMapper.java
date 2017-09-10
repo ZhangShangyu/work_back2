@@ -16,19 +16,23 @@ public interface HouseMapper {
 
     List<House> getHouseByRoom(@Param("count") Integer count);
 
-    String getHeadImg(@Param("houseId") Integer houseId);
+    String getHeadImg(House house);
 
     void insertHouse(House house);
 
     void insertHouseExtend(House house);
 
-    void insertHouseImg(@Param("houseId") Integer houseId, @Param("imgUrl") String imgUrl);
+    void insertHouseImg(@Param("houseId") Integer houseId,
+                        @Param("imgUrl") String imgUrl,
+                        @Param("houseImgTable") String houseImgTable);
 
-    House getHouseById(@Param("houseId") Integer houseId);
+    House getHouseById(House house);
 
-    House getHouseExtendById(@Param("houseId") Integer houseId);
+    House getHouseExtendById(House house);
 
-    List<String> getHouseImgs(@Param("houseId") Integer houseId);
+    List<String> getHouseImgs(House house);
 
     List<House> getHouseByCreator(@Param("agentId") Integer agentId);
+
+    void insertAndGetIncId(House house);
 }

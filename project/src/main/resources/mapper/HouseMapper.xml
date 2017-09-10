@@ -25,14 +25,14 @@
     <select id="getHouseByTime" resultMap="BaseResultMap">
         select
         *
-        from house
+        from house0
         order by id desc
     </select>
 
     <select id="getHouseByArea" resultMap="BaseResultMap">
         select
         *
-        from house
+        from house0
         where area &gt; #{min} and area &lt;= #{max}
         order by id desc
     </select>
@@ -40,7 +40,7 @@
     <select id="getHouseByPrice" resultMap="BaseResultMap">
         select
         *
-        from house
+        from house0
         where price &gt; #{min} and price &lt;= #{max}
         order by id desc
     </select>
@@ -48,7 +48,7 @@
     <select id="getHouseByRoom" resultMap="BaseResultMap">
         select
         *
-        from house
+        from house0
         where 1=1
         <if test="count != 5 and count != null">
             and room = #{count}
@@ -59,60 +59,70 @@
         order by id desc
     </select>
 
-    <select id="getHeadImg" parameterType="java.lang.Integer" resultType="java.lang.String">
+    <select id="getHeadImg" resultType="java.lang.String">
         select
         img_url
-        from house_img
-        where house_id = #{houseId}
+        from ${houseImgTable}
+        where house_id = #{id}
         limit 1
     </select>
 
     <select id="getHouseById" resultMap="BaseResultMap">
         SELECT *
-        from house
-        where id = #{houseId}
+        from  ${houseTable}
+        where id = #{id}
         limit 1
     </select>
 
     <select id="getHouseByCreator" resultMap="BaseResultMap">
         SELECT *
-        from house
+        from  house0
+        where agent_id = #{agentId}
+        UNION
+        SELECT *
+        from  house1
         where agent_id = #{agentId}
     </select>
 
     <select id="getHouseExtendById" resultMap="BaseResultMap">
         SELECT *
-        from house_ext
-        where house_id = #{houseId}
+        from ${houseExtTable}
+        where house_id = #{id}
         limit 1
     </select>
 
 
     <select id="getHouseImgs" resultType="java.lang.String">
         SELECT img_url
-        from house_img
-        where house_id = #{houseId}
+        from ${houseImgTable}
+        where house_id = #{id}
     </select>
 
 
     <insert id="insertHouse" parameterType="com.zsy.bmw.model.House" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO
-        house(name, price, room, hall,
+        ${houseTable} (id, name, price, room, hall,
         position, all_pos, area, agent_id)
-        VALUES (#{name}, #{price}, #{room}, #{hall},
+        VALUES (#{id},#{name}, #{price}, #{room}, #{hall},
         #{position}, #{allPos}, #{area}, #{agentId})
     </insert>
 
-    <insert id="insertHouseExtend" parameterType="com.zsy.bmw.model.House" useGeneratedKeys="true">
+    <insert id="insertHouseExtend">
         INSERT INTO
-        house_ext(house_id, year, com_name, address, des)
+        ${houseExtTable}(house_id, year, com_name, address, des)
         VALUES (#{id}, #{year}, #{comName}, #{address}, #{des})
     </insert>
 
     <insert id="insertHouseImg">
         INSERT INTO
-        house_img(house_id, img_url)
+        ${houseImgTable}(house_id, img_url)
         VALUES(#{houseId}, #{imgUrl})
+    </insert>
+
+    <insert id="insertAndGetIncId" parameterType="com.zsy.bmw.model.House" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        id_src()
+        VALUES()
     </insert>
 
 

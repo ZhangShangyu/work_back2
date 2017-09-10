@@ -32,7 +32,7 @@ public class HouseController {
     private UploadFileUtil uploadFileUtil;
 
     @RequestMapping("/list")
-    public Result getTopHouse(HouseCondition condition) {
+    public Result getHouseList(HouseCondition condition) {
         logger.info("house list request", condition);
         Result result = new Result(Constant.OK_CODE, Constant.OK);
         result.setData(houseService.getHouse(condition));
@@ -51,6 +51,7 @@ public class HouseController {
 
     @RequestMapping("/detail")
     public Result getHouseDetail(@RequestParam("id") Integer houseId) {
+        System.out.print('b');
         logger.info("house detail request", houseId);
         House house = houseService.getHouseDetail(houseId);
         Result result = new Result(Constant.OK_CODE, Constant.OK);
