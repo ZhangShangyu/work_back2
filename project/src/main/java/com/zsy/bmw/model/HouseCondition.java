@@ -6,6 +6,7 @@ public class HouseCondition extends BaseEntity {
     private Character priceType;
     private Character areaType;
     private Character roomType;
+    private Character sortType;
 
     public Character getPriceType() {
         return priceType;
@@ -33,7 +34,7 @@ public class HouseCondition extends BaseEntity {
 
 
     private Integer pageNum = 1;
-    private Integer rows = 10;
+    private Integer rows = 2;
 
     public Integer getPageNum() {
         return pageNum;
@@ -51,14 +52,12 @@ public class HouseCondition extends BaseEntity {
         this.rows = rows;
     }
 
-    @Override
-    public String toString() {
-        return "HouseCondition{" +
-                "priceType=" + priceType +
-                ", areaType=" + areaType +
-                ", roomType=" + roomType +
-                ", pageNum=" + pageNum +
-                ", rows=" + rows +
-                '}';
+
+    public Character getSortType() {
+        return sortType;
+    }
+
+    public void setSortType(Character sortType) {
+        this.sortType = sortType;
     }
 }

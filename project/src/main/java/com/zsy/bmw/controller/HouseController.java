@@ -90,4 +90,10 @@ public class HouseController {
         return result;
     }
 
+    @RequestMapping("test")
+    public Result genTestData(@RequestParam("count") Integer count) {
+        houseService.genTestData(count);
+        return new Result(Constant.OK_CODE, "run test data started!");
+    }
+
 }
