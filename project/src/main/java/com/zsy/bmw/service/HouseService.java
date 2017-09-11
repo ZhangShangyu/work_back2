@@ -86,7 +86,7 @@ public class HouseService {
         house.setHall(getRandom(0, 4));
         house.setPrice((float) getRandom(10, 2000));
         house.setPosition(getRandom(0, 20));
-        house.setPosition(getRandom(20, 30));
+        house.setAllPos(getRandom(20, 30));
         house.setYear(getRandom(1990, 2020));
         house.setComName(getName());
         house.setDes(getName());
